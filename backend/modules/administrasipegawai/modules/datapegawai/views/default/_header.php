@@ -8,6 +8,7 @@ use common\components\SikepHelper;
     <div class="row form-group"> 
         <div class="col-sm-2">
             <div style="border-right: 1px solid #333;">
+
                 <?=
                 Html::img(SikepHelper::getImageUrl($model->FotoPegawai, '@uploadfotopegawaiurl'), [
                     'alt' => 'Foto Pegawai',
@@ -25,12 +26,12 @@ use common\components\SikepHelper;
         </div>
         <div class="bottom-align-text">
             <?php
-            $iconHp = Html::img(Yii::getAlias('@web') . '/../assets/images/datapegawai/phone.png', [
+            $iconHp = Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/phone.png', [
                         'alt' => 'Phone',
                         'height' => '14px',
             ]);
             $hp = !empty($model->NomorHandphone) ? $model->NomorHandphone : 'Tidak Ada';
-            $iconEmail = Html::img(Yii::getAlias('@web') . '/../assets/images/datapegawai/email.png', [
+            $iconEmail = Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/email.png', [
                         'alt' => 'Email',
                         'height' => '14px',
             ]);

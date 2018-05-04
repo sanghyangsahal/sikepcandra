@@ -3,9 +3,20 @@
 namespace common\components;
 
 use yii;
+use yii\helpers\Url;
 use kartik\grid\GridView;
 
 class SikepHelper {
+
+    /**
+     * 
+     * return url 
+     * @param type $alias
+     * @return type
+     */
+    public function getAlias($alias) {
+        return Url::base() . Yii::getAlias($alias);
+    }
 
     /**
      * fetch stored image url
@@ -13,12 +24,15 @@ class SikepHelper {
      * @return string
      */
     public function getImageUrl($imgName, $alias) {
-        if (isset($imgName)) {
-            return Yii ::getAlias($alias) . '/' . $imgName;
-        }
+        $path = isset($imgName) ? (self::getAlias($alias) . '/' . $imgName) : null;
+
+        // note: file_exists ga berfungsi, nanti dicek lg
+        //if (!empty($path) && file_exists($path)) {
+            return $path;
+        //}
 
         //klo gambar unavailable, pake blank jpg dari assets dulu
-        return Yii ::getAlias('@assetsdatapegawai') . '/' . Yii::$app->params['emptyImageName'];
+        return self::getAlias('@assetsdatapegawai') . '/' . Yii::$app->params['emptyImageName'];
     }
 
     /**
@@ -26,7 +40,7 @@ class SikepHelper {
      * @return boolean the status of deletion
      */
     public function deleteFile($imgName, $alias) {
-        $path = isset($imgName) ? (Yii ::getAlias($alias) . '/' . $imgName) : null;
+        $path = isset($imgName) ? (self::getAlias($alias) . '/' . $imgName) : null;
 
         // check if file exists on server
         if (empty($path) || !file_exists($path)) {
@@ -44,7 +58,7 @@ class SikepHelper {
     public function uploadFile($img, $prefix, $alias) {
         if (!empty($img)) {
             $imgName = $prefix . '.' . $img->extension;
-            if ($img->saveAs(Yii ::getAlias($alias) . '/' . $imgName)) {
+            if ($img->saveAs(self::getAlias($alias) . '/' . $imgName)) {
                 return $imgName;
             }
         }
@@ -184,7 +198,7 @@ class SikepHelper {
      * @return none
      * @author Sarfraz
      */
-    public function consoleLog($name, $data = NULL, $jsEval = FALSE) {
+    public function cs($name, $data = NULL, $jsEval = FALSE) {
         if (!$name)
             return false;
 
