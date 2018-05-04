@@ -214,15 +214,15 @@ use backend\models\TrefWarnaKulit;
                 'maxFileCount' => 1,
                 'allowedFileExtensions' => ['jpg', 'png', 'pdf'],
                 'initialPreview' => [
-                    SikepHelper::getImageUrl($model->DokumenAktaLahir),
+                    SikepHelper::getImageUrl($model->DokumenAktaLahir, '@uploadaktapegawaiurl'),
                 ],
                 'initialPreviewAsData' => TRUE,
                 'initialCaption' => isset($model->DokumenAktaLahir) && !empty($model->DokumenAktaLahir) ? $model->DokumenAktaLahir : '',
                 'maxFileSize' => 2000,
                 'showRemove' => FALSE,
                 'showUpload' => FALSE,
+                'deleteUrl' => 'delete-image?id=' . $model->IdPegawai . '&prefix=' . Yii::$app->params['prefixFileAkta'] . '&filename=' . $model->DokumenAktaLahir,
             //'overwriteInitial' => TRUE,
-            //'deleteUrl' => 'delete-image?id=' . $model->IdPegawai,
             //'uploadUrl' => 'upload-image?id=' . $model->IdPegawai,
             //'initialPreviewShowDelete' => false,
             //'previewFileType' => 'any',//'any','image'
@@ -254,14 +254,14 @@ use backend\models\TrefWarnaKulit;
                 'maxFileCount' => 1,
                 'allowedFileExtensions' => ['jpg', 'png'],
                 'initialPreview' => [
-                    SikepHelper::getImageUrl($model->FotoPegawai),
+                    SikepHelper::getImageUrl($model->FotoPegawai, '@uploadfotopegawaiurl'),
                 ],
                 'initialPreviewAsData' => TRUE,
                 'initialCaption' => isset($model->FotoPegawai) && !empty($model->FotoPegawai) ? $model->FotoPegawai : '',
                 'maxFileSize' => 2000,
                 'showRemove' => FALSE,
                 'showUpload' => FALSE,
-            //'deleteUrl' => 'delete-image?id=' . $model->IdPegawai,
+                'deleteUrl' => 'delete-image?id=' . $model->IdPegawai . '&prefix=' . Yii::$app->params['prefixFileFoto'] . '&filename=' . $model->FotoPegawai,
             ]
         ]);
 
@@ -287,7 +287,7 @@ use backend\models\TrefWarnaKulit;
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-    
+
     <?php ActiveForm::end(); ?>
 
 </div>

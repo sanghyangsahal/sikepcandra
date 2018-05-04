@@ -7,49 +7,26 @@ use kartik\grid\GridView;
 
 class SikepHelper {
 
-    private static function _getBasePathFolderFotoPegawai() {
-        //ganti sama path server upload
-        return Yii::$app->basePath . '/web' . Yii::$app->params['pathFotoPegawaiFolder'];
-    }
-
-    private static function _getBaseUrlFolderFotoPegawai() {
-        return Yii::$app->urlManager->baseUrl . Yii::$app->params['pathFotoPegawaiFolder'];
-    }
-
-    /**
-     * fetch stored image file name with complete path 
-     * @return string
-     * semacam D:\\www\\sikep3\\sikep\\backend/web/../assets/uploads/foto_pegawai/foto_24.jpg
-     */
-    public function getImagePath($imgName) {
-        return isset($imgName) ? (self::_getBasePathFolderFotoPegawai() . $imgName) : null;
-    }
-
     /**
      * fetch stored image url
      * return a default image placeholder if image is not found
      * @return string
-     * semacam /sikep3/sikep/backend/web/../assets/uploads/foto_pegawai/foto_24.jpg
      */
-    public function getImageUrl($imgName) {
+    public function getImageUrl($imgName, $alias) {
         if (isset($imgName)) {
-            return self::_getBaseUrlFolderFotoPegawai() . $imgName;
+            return Yii ::getAlias($alias) . '/' . $imgName;
         }
 
         //klo gambar unavailable, pake blank jpg dari assets dulu
-        return Yii::$app->urlManager->baseUrl . Yii::$app->params['pathDataPegawaiAssets'] . Yii::$app->params['emptyImageName'];
-    }
-
-    public function getPathAssetsDataPegawai() {
-        return Yii::$app->urlManager->baseUrl . Yii::$app->params['pathDataPegawaiAssets'];
+        return Yii ::getAlias('@assetsdatapegawai') . '/' . Yii::$app->params['emptyImageName'];
     }
 
     /**
      * Process deletion of image
      * @return boolean the status of deletion
      */
-    public function deleteFile($imgName) {
-        $path = isset($imgName) ? (self::_getBasePathFolderFotoPegawai() . $imgName) : null;
+    public function deleteFile($imgName, $alias) {
+        $path = isset($imgName) ? (Yii ::getAlias($alias) . '/' . $imgName) : null;
 
         // check if file exists on server
         if (empty($path) || !file_exists($path)) {
@@ -64,10 +41,10 @@ class SikepHelper {
         return true;
     }
 
-    public function uploadFile($img, $prefix) {
+    public function uploadFile($img, $prefix, $alias) {
         if (!empty($img)) {
             $imgName = $prefix . '.' . $img->extension;
-            if ($img->saveAs(SikepHelper::getImagePath($imgName))) {
+            if ($img->saveAs(Yii ::getAlias($alias) . '/' . $imgName)) {
                 return $imgName;
             }
         }

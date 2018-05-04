@@ -9,7 +9,7 @@ use common\components\SikepHelper;
         <div class="col-sm-2">
             <div style="border-right: 1px solid #333;">
                 <?=
-                Html::img(SikepHelper::getImageUrl($model->FotoPegawai), [
+                Html::img(SikepHelper::getImageUrl($model->FotoPegawai, '@uploadfotopegawaiurl'), [
                     'alt' => 'Foto Pegawai',
                     'height' => '140px',
                 ]);

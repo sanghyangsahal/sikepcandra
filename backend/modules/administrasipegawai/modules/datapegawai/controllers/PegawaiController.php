@@ -95,11 +95,13 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
 
             $fotoPegawai = UploadedFile::getInstance($model, 'fileFotoPegawai');
             if (!empty($fotoPegawai)) {
-                $model->FotoPegawai = SikepHelper::uploadFile($fotoPegawai, Yii::$app->params['prefixFileFoto'] . $model->IdPegawai);
+                $model->FotoPegawai = SikepHelper::uploadFile($fotoPegawai, Yii::$app->params['prefixFileFoto'] . $model->IdPegawai, '@uploadfotopegawaipath');
             }
 
             $aktaPegawai = UploadedFile::getInstance($model, 'fileAktaPegawai');
-            $model->DokumenAktaLahir = SikepHelper::uploadFile($aktaPegawai, Yii::$app->params['prefixFileAkta'] . $model->IdPegawai);
+            if (!empty($aktaPegawai)) {
+                $model->DokumenAktaLahir = SikepHelper::uploadFile($aktaPegawai, Yii::$app->params['prefixFileAkta'] . $model->IdPegawai, '@uploadaktapegawaipath');
+            }
 
             if ($model->save()) {
                 return $this->render(Yii::$app->params['pathDataPegawaiView'] . 'default/view', [
@@ -137,9 +139,9 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
     public function actionDelete($id) {
         $model = $this->findModel($id);
 
-        SikepHelper::deleteFile($model->FotoPegawai);
+        SikepHelper::deleteFile($model->FotoPegawai, '@uploadfotopegawaipath');
 
-        SikepHelper::deleteFile($model->DokumenAktaLahir);
+        SikepHelper::deleteFile($model->DokumenAktaLahir, '@uploadaktapegawaipath');
 
         $model->delete();
 
@@ -174,46 +176,24 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
      * hapus image pake ajax
      * @param type $id
      */
-    public function actionDeleteImage($id) {
-        $success = FALSE;
-
+    public function actionDeleteImage($id, $prefix, $filename) {
         $model = $this->findModel($id);
 
-        //kalo berhasil dihapus
-        if (SikepHelper::deleteFile($model->FotoPegawai)) {
-            $model->FotoPegawai = null;
-            $success = $model->save();
+        switch ($prefix) {
+            case Yii::$app->params['prefixFileFoto']:
+                SikepHelper::deleteFile($filename, '@uploadfotopegawaipath');
+                $model->FotoPegawai = null;
+                break;
+            case Yii::$app->params['prefixFileAkta']:
+                SikepHelper::deleteFile($filename, '@uploadaktapegawaipath');
+                $model->DokumenAktaLahir = null;
+                break;
         }
+
+        $success = $model->save();
 
         echo Json::encode(['success' => $success]);
     }
-
-    /**
-     * Lists all TmstPegawai models.
-     * @return mixed
-     */
-//    public function actionIndex() {
-//        $searchModel = new TmstPegawaiSearch();
-//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//
-//        return $this->render('index', [
-//                    'searchModel' => $searchModel,
-//                    'dataProvider' => $dataProvider,
-//        ]);
-//    }
-
-    /**
-     * Displays a single TmstPegawai model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-//    public function actionView($id) {
-//        return $this->render('view', [
-//                    'model' => $this->findModel($id),
-//                    'id' => $id,
-//        ]);
-//    }
 
     /**
      * upload image pake ajax

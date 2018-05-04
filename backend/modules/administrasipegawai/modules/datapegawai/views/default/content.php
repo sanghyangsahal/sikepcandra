@@ -16,7 +16,7 @@ use yii\helpers\Html;
     <div class="col-sm-2 col-sm-offset-1">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'biodata.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/biodata.png', [
                         'alt' => 'Biodata',
                         'width' => '64px',
                     ]), ['view?sub=pegawai&page=view&id=' . $id], ['class' => 'item-hover']);
@@ -27,7 +27,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'pasangan.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/pasangan.png', [
                         'alt' => 'Pasangan',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -38,7 +38,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'anak.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/anak.png', [
                         'alt' => 'Anak',
                         'width' => '64px'
                     ]), ['view?sub=anak&page=index&id=' . $id], ['class' => 'item-hover']);
@@ -49,7 +49,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'orang_tua.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/orang_tua.png', [
                         'alt' => 'Orang Tua',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -60,7 +60,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'kerabat.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/kerabat.png', [
                         'alt' => 'Kerabat',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -78,7 +78,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'cpns.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/cpns.png', [
                         'alt' => 'CPNS',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -89,7 +89,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'pns.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/pns.png', [
                         'alt' => 'PNS',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -100,7 +100,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'pangkat.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/pangkat.png', [
                         'alt' => 'Pangkat',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -111,7 +111,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'jabatan.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/jabatan.png', [
                         'alt' => 'Jabatan',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -122,7 +122,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'fungsional.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/fungsional.png', [
                         'alt' => 'Fungsional',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -133,7 +133,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'sanksi.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/sanksi.png', [
                         'alt' => 'Sanksi',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -146,7 +146,7 @@ use yii\helpers\Html;
     <div class="col-sm-2 col-sm-offset-3">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'kgb.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/kgb.png', [
                         'alt' => 'KGB',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -157,7 +157,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'pensiun.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/pensiun.png', [
                         'alt' => 'Pensiun/Berhenti',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -168,7 +168,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'pmk.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/pmk.png', [
                         'alt' => 'Peninjauan Masa Kerja',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -186,7 +186,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'pendidikan.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/pendidikan.png', [
                         'alt' => 'Pendidikan',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -197,7 +197,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'penghargaan.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/penghargaan.png', [
                         'alt' => 'Penghargaan',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -208,7 +208,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'tugas_belajar.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/tugas_belajar.png', [
                         'alt' => 'Tugas Belajar',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -219,7 +219,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'seminar.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/seminar.png', [
                         'alt' => 'Seminar',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -230,7 +230,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'organisasi.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/organisasi.png', [
                         'alt' => 'Organisasi',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -241,7 +241,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'luar_negeri.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/luar_negeri.png', [
                         'alt' => 'Luar Negeri',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -259,7 +259,7 @@ use yii\helpers\Html;
     <div class="col-sm-2 col-sm-offset-1">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'prajab.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/prajab.png', [
                         'alt' => 'Diklat Pra Jabatan',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -270,7 +270,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'penjenjangan.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/penjenjangan.png', [
                         'alt' => 'Diklat Penjenjangan',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -281,7 +281,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'diklat_teknis.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/diklat_teknis.png', [
                         'alt' => 'Diklat Teknis',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -292,7 +292,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'diklat_fungsional.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/diklat_fungsional.png', [
                         'alt' => 'Diklat Fungsional',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
@@ -303,7 +303,7 @@ use yii\helpers\Html;
     <div class="col-sm-2">
         <figure class="text-center">
             <?=
-            Html::a(Html::img(SikepHelper::getPathAssetsDataPegawai() . 'dp3.png', [
+            Html::a(Html::img(Yii ::getAlias('@assetsdatapegawai') . '/dp3.png', [
                         'alt' => 'DP3',
                         'width' => '64px'
                     ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);

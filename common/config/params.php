@@ -1,7 +1,7 @@
 <?php
 
 //note: usage
-//Yii::$app->params['pathDataPegawaiView']
+//Yii::$app->params['prefixFileFoto']
 
 return [
     'adminEmail' => 'admin@example.com',
@@ -13,6 +13,4 @@ return [
     'prefixFileFoto' => 'foto_',
     'prefixFileAkta' => 'akta_',
     'pathDataPegawaiView' => '@backend/modules/administrasipegawai/modules/datapegawai/views/',
-    'pathDataPegawaiAssets' => '/../assets/images/datapegawai/',
-    'pathFotoPegawaiFolder' => '/../assets/uploads/foto_pegawai/',
 ];

@@ -101,7 +101,7 @@ Url::remember();
                     'value' => FileInput::widget([
                         'model' => $model,
                         'attribute' => 'DokumenAktaLahir',
-                        'value' => SikepHelper::getImageUrl($model->DokumenAktaLahir),
+                        'value' => SikepHelper::getImageUrl($model->DokumenAktaLahir, '@uploadaktapegawaiurl'),
                         'options' => [
                             //'accept' => 'image/*',
                             'multiple' => false
@@ -109,7 +109,7 @@ Url::remember();
                         'language' => 'id',
                         'pluginOptions' => [
                             'initialPreview' => [
-                                SikepHelper::getImageUrl($model->DokumenAktaLahir),
+                                SikepHelper::getImageUrl($model->DokumenAktaLahir, '@uploadaktapegawaiurl'),
                             ],
                             'maxFileCount' => 1,
                             'overwriteInitial' => FALSE,
@@ -152,43 +152,6 @@ Url::remember();
             //['attribute' => 'publish_date', 'type' => DetailView::INPUT_DATE],
             ]
         ])
-        ?>
-
-        <?php
-//        echo DetailView::widget([
-//            'model' => $model,
-//            'attributes' => [
-//                'NIK',
-//                'statusPerkawinan.NamaStatusKawin',
-//                'jenisPegawai.NamaJenisPegawai',
-//                'statusPegawai.StatusPegawai',
-//                'agama.NamaAgama',
-//                'NomorTelepon',
-//                'PropinsiTempatLahir',
-//                'JenisKelamin',
-//                'golonganDarah.NamaGolonganDarah',
-//                'TinggiBadan',
-//                'BeratBadan',
-//                'rambut.NamaJenisRambut',
-//                'warnaKulit.NamaWarnaKulit',
-//                'bentukMuka.NamaBentukMuka',
-//                'CiriKhusus',
-//                'CacatTubuh',
-//                'sukuBangsa.NamaSukuBangsa',
-//                [
-//                    'attribute' => 'DokumenAktaLahir',
-//                    'value' => SikepHelper::getImageUrl($model->DokumenAktaLahir),
-//                    'format' => ['image', [/* 'width' => '200', */ 'height' => '300']],
-//                ],
-//                'KegemaranHobi',
-//                'MasaKerja',
-//                'kodeBankPegawai.NamaBank',
-//                'NomorRekeningPegawai',
-//                'CabangRekeningPegawai',
-//                'NamaRekeningPegawai',
-//                'FingerprintPegawai:ntext',
-//            ],
-//        ]);
         ?>
 
     </div>
