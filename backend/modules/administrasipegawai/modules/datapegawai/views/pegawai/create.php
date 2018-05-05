@@ -6,9 +6,7 @@ $this->title = 'Tambah Pegawai';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="row form-group">
-    <?= Html::a('Kembali', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
-</div>
+<?= Html::a('Kembali', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
 
 <div class="tmst-pegawai-create">
 

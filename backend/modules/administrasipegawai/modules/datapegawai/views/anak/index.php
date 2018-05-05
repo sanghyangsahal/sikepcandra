@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 use kartik\grid\GridView;
 use common\components\SikepHelper;
 
@@ -12,11 +11,6 @@ use common\components\SikepHelper;
 $this->title = 'Anak';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="row form-group">
-    <?php echo Html::a('Kembali', Url::to(['default/view', 'id' => $idPegawai]), ['class' => 'btn btn-warning pull-right']); ?>
-</div>
-
 <div class="tmst-keluarga-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

@@ -7,9 +7,7 @@ $this->title = 'Update Pegawai';
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 
-<div class="row form-group">
-    <?= Html::a('Kembali', Url::previous(), ['class' => 'btn btn-warning pull-right']) ?>
-</div>
+<?= Html::a('Kembali', Url::previous(), ['class' => 'btn btn-warning pull-right']) ?>
 
 <div class="tmst-pegawai-update">
 

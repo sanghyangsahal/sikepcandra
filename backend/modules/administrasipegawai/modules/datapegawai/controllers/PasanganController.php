@@ -3,24 +3,22 @@
 namespace backend\modules\administrasipegawai\modules\datapegawai\controllers;
 
 use Yii;
-use yii\filters\VerbFilter;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use backend\models\TmstKeluarga;
 use backend\models\TmstKeluargaSearch;
-use backend\models\TmstPegawai;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
  * PasanganController implements the CRUD actions for TmstKeluarga model.
  */
-class PasanganController extends Controller {
-
-    public $layout = 'main';
-
+class PasanganController extends Controller
+{
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -35,18 +33,14 @@ class PasanganController extends Controller {
      * Lists all TmstKeluarga models.
      * @return mixed
      */
-    public function actionIndex($idPegawai) {
+    public function actionIndex()
+    {
         $searchModel = new TmstKeluargaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
-                    'idPegawai' => $idPegawai,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -56,16 +50,10 @@ class PasanganController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
-        $model = $this->findModel($id);
-
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $model,
-                    'idPegawai' => $model->IDPegawai,
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -74,25 +62,16 @@ class PasanganController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($idPegawai) {
+    public function actionCreate()
+    {
         $model = new TmstKeluarga();
 
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        if ($model->load(Yii::$app->request->post())) {
-
-            $model->IDPegawai = $idPegawai;
-
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->IdAnggotaKeluarga]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->IdAnggotaKeluarga]);
         }
 
         return $this->render('create', [
-                    'model' => $model,
-                    'idPegawai' => $idPegawai,
+            'model' => $model,
         ]);
     }
 
@@ -103,20 +82,16 @@ class PasanganController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
-
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IdAnggotaKeluarga]);
         }
 
         return $this->render('update', [
-                    'model' => $model,
-                    'idPegawai' => $model->IDPegawai,
+            'model' => $model,
         ]);
     }
 
@@ -127,14 +102,11 @@ class PasanganController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
-        $model = $this->findModel($id);
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
 
-        $idPegawai = $model->IDPegawai;
-
-        $model->delete();
-
-        return $this->redirect(['index', 'idPegawai' => $idPegawai]);
+        return $this->redirect(['index']);
     }
 
     /**
@@ -144,12 +116,12 @@ class PasanganController extends Controller {
      * @return TmstKeluarga the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = TmstKeluarga::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

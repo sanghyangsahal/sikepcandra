@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/pasangan.png', [
                         'alt' => 'Pasangan',
                         'width' => '64px'
-                    ]), ['pasangan/index?idPegawai=' . $id], ['class' => 'item-hover']);
+                    ]), ['pasangan/index?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Pasangan</figcaption>
         </figure>
