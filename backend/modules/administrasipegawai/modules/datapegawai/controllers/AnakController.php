@@ -12,18 +12,17 @@ use backend\models\TmstPegawai;
 
 /**
  * note:
- * PENTING :
+ * CONTROLLER :
  * - tambahkan global variabel -> public $layout = 'main';
  * - pada actionIndex, actionCreate, actionUpdate, actionView assign parameter $this->view->params['modelPegawai']
  * - pada actionCreate assign manual $model->IDPegawai = $idPegawai; dan hapus form fieldnya _form.php
  * - pada actionDelete tambah parameter idPegawai pada redirect()
  * 
- * 
- * OPTIONAL :
+ * VIEW :
+ * - index.php tombol create tambah parameter idPegawai
  * - ganti use yii\grid\GridView; dengan use kartik\grid\GridView; cek contoh option widgetnya di view/default/index
  * 
  */
-
 class AnakController extends Controller {
 
     public $layout = 'main';
@@ -76,6 +75,7 @@ class AnakController extends Controller {
 
         return $this->render('view', [
                     'model' => $model,
+                    'idPegawai' => $model->IDPegawai,
         ]);
     }
 
@@ -102,6 +102,7 @@ class AnakController extends Controller {
 
         return $this->render('create', [
                     'model' => $model,
+                    'idPegawai' => $idPegawai,
         ]);
     }
 
@@ -125,6 +126,7 @@ class AnakController extends Controller {
 
         return $this->render('update', [
                     'model' => $model,
+                    'idPegawai' => $model->IDPegawai,
         ]);
     }
 
