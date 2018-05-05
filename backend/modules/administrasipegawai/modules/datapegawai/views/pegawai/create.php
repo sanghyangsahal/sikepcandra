@@ -2,13 +2,11 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Create Pegawai';
-//$this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
-//$this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['default/index']];
+$this->title = 'Tambah Pegawai';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?= Html::a('Kembali', ['default/index'], ['class' => 'btn btn-warning pull-right']) ?>
+<?= Html::a('Kembali', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
 
 <div class="tmst-pegawai-create">
 

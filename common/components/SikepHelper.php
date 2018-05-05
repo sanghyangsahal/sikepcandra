@@ -27,9 +27,9 @@ class SikepHelper {
         $path = isset($imgName) ? (self::getAlias($alias) . '/' . $imgName) : null;
 
         // note: file_exists ga berfungsi, nanti dicek lg
-        //if (!empty($path) && file_exists($path)) {
+        if (!empty($path) /*&& file_exists($path)*/) {
             return $path;
-        //}
+        }
 
         //klo gambar unavailable, pake blank jpg dari assets dulu
         return self::getAlias('@assetsdatapegawai') . '/' . Yii::$app->params['emptyImageName'];

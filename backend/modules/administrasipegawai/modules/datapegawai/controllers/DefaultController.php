@@ -6,16 +6,9 @@ use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use backend\models\TmstKeluarga;
-use backend\models\TmstKeluargaSearch;
 use backend\models\TmstPegawai;
 use backend\models\TmstPegawaiSearch;
 
-//use common\components\SikepHelper;
-
-/**
- * PegawaiController implements the CRUD actions for TmstPegawai model.
- */
 class DefaultController extends Controller {
 
     /**
@@ -52,35 +45,15 @@ class DefaultController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $sub = 'default', $page = 'content') {
+    public function actionView($id) {
         $model = $this->findModel($id);
 
-        switch ($sub) {
-            case 'anak': //dari AnakController'
-                if ($page == 'create') {
-                    $modelAnak = new TmstKeluargaSearch();
-                } else {
-                    $modelAnak = TmstKeluarga::find()->where(['IDPegawai' => $id])->all();
-                }
-
-                $searchModel = new TmstKeluargaSearch();
-                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-                //SikepHelper::consoleLog('anak : ', $dataProvider, true);exit;
-
-                break;
-            default:
-                $searchModel = NULL;
-                $dataProvider = NULL;
-        }
+        $this->layout = 'main';
+        $this->view->params['modelPegawai'] = $model;
 
         return $this->render('view', [
                     'model' => $model,
-                    'modelAnak' => isset($modelAnak) ? $modelAnak : NULL,
-                    'id' => $id,
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
-                    'page' => $sub . '/' . $page,
+                    'id' => $id
         ]);
     }
 

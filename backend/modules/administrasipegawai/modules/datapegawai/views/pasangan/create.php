@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TmstKeluarga */
 
-$this->title = 'Tambah Anak';
-$this->params['breadcrumbs'][] = ['label' => 'Anak', 'url' => ['index']];
+$this->title = 'Create Tmst Keluarga';
+$this->params['breadcrumbs'][] = ['label' => 'Tmst Keluarga', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tmst-keluarga-create">

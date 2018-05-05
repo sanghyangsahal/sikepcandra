@@ -12,19 +12,9 @@ use common\components\SikepHelper;
 use backend\models\TrefKabupaten;
 use backend\models\TmstPegawai;
 
-/**
- * PegawaiController implements the CRUD actions for TmstPegawai model.
- */
-class PegawaiController extends Controller /* implements ViewContextInterface */ {
-//    /**
-//     * note:
-//     * ganti path default views folder, harus implements ViewContextInterface.
-//     * untuk menyesuaikan dengan navigasi view modul Data Pegawai
-//     * @return type
-//     */
-//    public function getViewPath() {
-//        return Yii::getAlias('@backend/modules/administrasipegawai/modules/datapegawai/views/datapegawai');
-//    }
+class PegawaiController extends Controller {
+
+    public $layout = 'main';
 
     /**
      * @inheritdoc
@@ -41,12 +31,30 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
     }
 
     /**
+     * Displays a single TmstPegawai model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id) {
+        $model = $this->findModel($id);
+
+        $this->view->params['modelPegawai'] = $model;
+
+        return $this->render('view', [
+                    'model' => $model,
+        ]);
+    }
+
+    /**
      * Creates a new TmstPegawai model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate() {
         $model = new TmstPegawai();
+
+        $this->view->params['modelPegawai'] = $model;
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -59,7 +67,6 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
             $model->PropinsiTempatLahir = $model->intIdPropinsi;
 
             if ($model->save()) {
-                //return $this->redirect(['view', 'id' => $model->IdPegawai]);
                 return $this->render(Yii::$app->params['pathDataPegawaiView'] . 'default/view', [
                             'model' => $model,
                             'id' => $model->IdPegawai,
@@ -68,9 +75,7 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
             }
         }
 
-        return $this->render('create', [
-                    'model' => $model,
-        ]);
+        return $this->render('create', ['model' => $model,]);
     }
 
     /**
@@ -82,6 +87,8 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
+
+        $this->view->params['modelPegawai'] = $model;
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -104,11 +111,7 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
             }
 
             if ($model->save()) {
-                return $this->render(Yii::$app->params['pathDataPegawaiView'] . 'default/view', [
-                            'model' => $model,
-                            'id' => $model->IdPegawai,
-                            'page' => 'pegawai/view',
-                ]);
+                return $this->redirect(['view', 'id' => $model->IdPegawai]);
             }
         } else {
             /**
@@ -122,10 +125,8 @@ class PegawaiController extends Controller /* implements ViewContextInterface */
             $model->TanggalLahir = Yii::$app->formatter->asDate($model->TanggalLahir, 'php:d F Y');
         }
 
-        return $this->render(Yii::$app->params['pathDataPegawaiView'] . 'default/view', [
+        return $this->render('update', [
                     'model' => $model,
-                    'id' => $id,
-                    'page' => 'pegawai/update',
         ]);
     }
 

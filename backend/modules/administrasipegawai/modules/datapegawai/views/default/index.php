@@ -4,12 +4,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\jui\DatePicker;
 use kartik\grid\GridView;
-use kartik\icons\Icon;
 use common\components\SikepHelper;
-
 //use yii\widgets\Pjax;
 
-Icon::map($this); //note: load font awesome
 
 /**
  * note:
@@ -46,16 +43,18 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <?php // Pjax::begin();              ?>
+    <?php // Pjax::begin();               ?>
 
     <?=
     GridView::widget([
-        'moduleId' => 'gridview',
         'dataProvider' => $dataProvider,
+        //'filterModel' => $searchModel,
+        'moduleId' => 'gridview',
         'condensed' => TRUE,
         'hover' => TRUE,
         'resizableColumns' => TRUE,
         'persistResize' => TRUE,
+        'responsiveWrap' => TRUE,
         'floatHeader' => TRUE,
         'floatHeaderOptions' => ['scrollingTop' => '50'],
         'export' => ['fontAwesome' => TRUE],
@@ -87,8 +86,6 @@ $this->params['breadcrumbs'][] = $this->title;
         //'beforeGrid' => 'My fancy content before.',
         //'afterGrid' => 'My fancy content after.',
         ],
-        //'filterModel' => $searchModel,
-        //'responsiveWrap' => TRUE,
         'columns' => [
             [
                 'class' => 'yii\grid\SerialColumn',
@@ -175,8 +172,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'urlCreator' => function ($action, $model, $key, $index) {
                     if ($action === 'view') {
                         return Url::to(['view', 'id' => $model->IdPegawai]);
-                    } else 
-                        if ($action === 'update') {
+                    } else
+                    if ($action === 'update') {
                         return Url::to(['pegawai/update', 'id' => $model->IdPegawai]);
                     } else if ($action === 'delete') {
                         return Url::to(['pegawai/delete', 'id' => $model->IdPegawai]);

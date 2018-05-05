@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\TmstKeluarga */
 
 $this->title = $model->IdAnggotaKeluarga;
-$this->params['breadcrumbs'][] = ['label' => 'Anak', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tmst Keluarga', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tmst-keluarga-view">
@@ -16,23 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->IdAnggotaKeluarga], ['class' => 'btn btn-primary']) ?>
-        <?=
-        Html::a('Delete', ['delete', 'id' => $model->IdAnggotaKeluarga], [
+        <?= Html::a('Delete', ['delete', 'id' => $model->IdAnggotaKeluarga], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ])
-        ?>
+        ]) ?>
     </p>
 
-    <?=
-    DetailView::widget([
+    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'IdAnggotaKeluarga',
-            //'IDPegawai',
+            'IdAnggotaKeluarga',
+            'IDPegawai',
             'JenisHubunganKeluarga',
             'JenisKelamin',
             'NamaAnggotaKeluarga',
@@ -52,7 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'NomorKARIS_KARSU',
             'FotoAnggotaKeluarga',
         ],
-    ])
-    ?>
+    ]) ?>
 
 </div>

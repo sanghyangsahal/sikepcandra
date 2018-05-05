@@ -12,6 +12,9 @@ use kartik\file\FileInput;
  * 
  */
 Url::remember();
+
+$this->title = 'Biodata';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="tmst-pegawai-view">

@@ -22,7 +22,7 @@ class Module extends \yii\base\Module {
         $this->modules = [
             'datapegawai' => [
                 'class' => 'backend\modules\administrasipegawai\modules\datapegawai\Module',
-                //'defaultRoute' => 'pegawai/index'
+            //'defaultRoute' => 'pegawai/index'
             ],
         ];
     }

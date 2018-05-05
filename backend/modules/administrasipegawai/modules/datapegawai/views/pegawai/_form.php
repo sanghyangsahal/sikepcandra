@@ -7,10 +7,6 @@ use kartik\file\FileInput;
 use kartik\select2\Select2;
 use common\components\SikepHelper;
 use yii\bootstrap\ActiveForm;
-
-/*
- * note: models yang dipakai di view ini, sorted alphabetically
- */
 use backend\models\TrefAgama;
 use backend\models\TrefBank;
 use backend\models\TrefBentukMuka;
@@ -197,10 +193,6 @@ use backend\models\TrefWarnaKulit;
     ?>
 
     <?= $form->field($model, 'MasaKerja')->textInput(['maxlength' => true]) ?>
-
-    <!--echo $form->field($model, 'DokumenAktaLahir')->textInput(['maxlength' => true]);-->
-    <?php
-    ?>
 
     <?php
     if (!$isNewRecord) {
