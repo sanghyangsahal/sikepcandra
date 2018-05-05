@@ -4,6 +4,7 @@ namespace backend\modules\administrasipegawai\modules\datapegawai\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use backend\models\TmstPegawai;
@@ -49,6 +50,8 @@ class DefaultController extends Controller {
         $model = $this->findModel($id);
 
         $this->layout = 'main';
+
+        $this->view->params['backUrl'] = Url::to(['index',]);
         $this->view->params['modelPegawai'] = $model;
 
         return $this->render('view', [

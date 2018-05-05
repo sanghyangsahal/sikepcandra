@@ -5,6 +5,7 @@ namespace backend\modules\administrasipegawai\modules\datapegawai\controllers;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -13,8 +14,6 @@ use backend\models\TrefKabupaten;
 use backend\models\TmstPegawai;
 
 class PegawaiController extends Controller {
-
-    public $layout = 'main';
 
     /**
      * @inheritdoc
@@ -37,8 +36,11 @@ class PegawaiController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id) {
+        $this->layout = 'main';
+
         $model = $this->findModel($id);
 
+        $this->view->params['backUrl'] = Url::to(['default/view', 'id' => $model->IdPegawai]);
         $this->view->params['modelPegawai'] = $model;
 
         return $this->render('view', [
@@ -54,6 +56,7 @@ class PegawaiController extends Controller {
     public function actionCreate() {
         $model = new TmstPegawai();
 
+        $this->view->params['backUrl'] = Url::to(['index',]);
         $this->view->params['modelPegawai'] = $model;
 
         if ($model->load(Yii::$app->request->post())) {
@@ -86,8 +89,11 @@ class PegawaiController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id) {
+        $this->layout = 'main';
+
         $model = $this->findModel($id);
 
+        $this->view->params['backUrl'] = Url::previous();
         $this->view->params['modelPegawai'] = $model;
 
         if ($model->load(Yii::$app->request->post())) {

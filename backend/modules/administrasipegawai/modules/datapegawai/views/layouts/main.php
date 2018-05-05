@@ -64,7 +64,12 @@ AppAsset::register($this);
                 ?>
                 <?= Alert::widget() ?>
 
-                <?= $this->render('header', ['model' => $this->params['modelPegawai'],]) ?>
+                <?=
+                $this->render('header', [
+                    'model' => $this->params['modelPegawai'],
+                    'backUrl' => isset($this->params['backUrl']) ? $this->params['backUrl'] : NULL,
+                ])
+                ?>
 
                 <?= $content ?>
 

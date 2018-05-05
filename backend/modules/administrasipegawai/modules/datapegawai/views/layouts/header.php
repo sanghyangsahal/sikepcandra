@@ -45,3 +45,8 @@ use common\components\SikepHelper;
     <div class="row form-group" style="padding:2px;background:#ED6454;"></div>
 </div>
 
+<?php if (!is_null($backUrl)): ?>
+    <div class="row form-group">
+        <?= Html::a('Kembali', $backUrl, ['class' => 'btn btn-default pull-right']) ?>
+    </div>
+<?php endif; ?>

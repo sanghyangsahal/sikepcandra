@@ -14,26 +14,16 @@ use kartik\file\FileInput;
 Url::remember();
 
 $this->title = 'Biodata';
+$this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="tmst-pegawai-view">
 
-    <div class="row form-group">
-        <?php echo Html::a('Kembali', Url::to(['default/view', 'id' => $model->IdPegawai]), ['class' => 'btn btn-warning pull-right']); ?>
-    </div>
-
     <div class="body-content">
-        <?= Html::a('Update', ['pegawai/update', 'id' => $model->IdPegawai], ['class' => 'btn btn-primary']) ?>
-        <?php
-//        echo Html::a('Delete', ['delete', 'id' => $model->IdPegawai], [
-//            'class' => 'btn btn-danger',
-//            'data' => [
-//                'confirm' => 'Are you sure you want to delete this item?',
-//                'method' => 'post',
-//            ],
-//        ]);
-        ?>
+        <p>
+            <?= Html::a('Update', ['pegawai/update', 'id' => $model->IdPegawai], ['class' => 'btn btn-primary']) ?>
         </p>
 
         <?=

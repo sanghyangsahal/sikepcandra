@@ -1,26 +1,18 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 use kartik\grid\GridView;
 use common\components\SikepHelper;
 
-/* @var $this yii\web\View */
-/* @var $searchModel backend\models\TmstKeluargaSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'Anak';
+$this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="row form-group">
-    <?php echo Html::a('Kembali', Url::to(['default/view', 'id' => $idPegawai]), ['class' => 'btn btn-warning pull-right']); ?>
-</div>
 
 <div class="tmst-keluarga-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Tambah Anak', ['create?idPegawai=' . $idPegawai], ['class' => 'btn btn-success']) ?>

@@ -4,6 +4,7 @@ namespace backend\modules\administrasipegawai\modules\datapegawai\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use backend\models\TmstKeluarga;
@@ -39,6 +40,7 @@ class PasanganController extends Controller {
         $searchModel = new TmstKeluargaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $this->view->params['backUrl'] = Url::to(['default/view', 'id' => $idPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
@@ -59,6 +61,7 @@ class PasanganController extends Controller {
     public function actionView($id) {
         $model = $this->findModel($id);
 
+        $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $model->IDPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
@@ -77,6 +80,7 @@ class PasanganController extends Controller {
     public function actionCreate($idPegawai) {
         $model = new TmstKeluarga();
 
+        $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $idPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
@@ -106,6 +110,7 @@ class PasanganController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
+        $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $model->IDPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }

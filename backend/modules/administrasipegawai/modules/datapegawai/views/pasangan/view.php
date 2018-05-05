@@ -2,15 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\helpers\Url;
 
 $this->title = $model->IdAnggotaKeluarga;
+$this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="row form-group">
-    <?php echo Html::a('Kembali', Url::to(['index', 'idPegawai' => $idPegawai]), ['class' => 'btn btn-warning pull-right']); ?>
-</div>
 
 <div class="tmst-keluarga-view">
 
@@ -18,15 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->IdAnggotaKeluarga], ['class' => 'btn btn-primary']) ?>
-        <?=
-        Html::a('Delete', ['delete', 'id' => $model->IdAnggotaKeluarga], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ])
-        ?>
     </p>
 
     <?=

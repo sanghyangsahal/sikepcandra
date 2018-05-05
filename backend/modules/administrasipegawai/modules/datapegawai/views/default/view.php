@@ -7,14 +7,11 @@ use yii\helpers\Html;
  * note:
  * $id => id pegawai
  */
-
 $this->title = 'Profil Pegawai';
+$this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="row form-group">
-    <?= Html::a('Kembali', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
-</div>
 
 <div class="row form-group"> 
     <h3>Data Pokok</h3>
