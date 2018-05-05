@@ -11,10 +11,7 @@ use backend\models\TmstKeluarga;
 use backend\models\TmstKeluargaSearch;
 use backend\models\TmstPegawai;
 
-/**
- * PasanganController implements the CRUD actions for TmstKeluarga model.
- */
-class PasanganController extends Controller {
+class SaudaraController extends Controller {
 
     public $layout = 'main';
 

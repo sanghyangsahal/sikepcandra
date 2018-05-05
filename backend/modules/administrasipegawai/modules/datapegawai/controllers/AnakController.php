@@ -17,12 +17,11 @@ use backend\models\TmstPegawai;
  * - tambahkan global variabel -> public $layout = 'main';
  * - pada actionIndex, actionCreate, actionUpdate, actionView assign parameter $this->view->params['modelPegawai']
  * - pada actionCreate assign manual $model->IDPegawai = $idPegawai; dan hapus form fieldnya _form.php
- * - pada actionDelete tambah parameter idPegawai pada redirect()
  * 
  * VIEW :
  * - index.php tombol create tambah parameter idPegawai
  * - ganti use yii\grid\GridView; dengan use kartik\grid\GridView; cek contoh option widgetnya di view/default/index
- * 
+ * - ganti use yii\widgets\DetailView; dengan use kartik\detail\DetailView;
  */
 class AnakController extends Controller {
 
@@ -52,7 +51,7 @@ class AnakController extends Controller {
 
         $this->view->params['backUrl'] = Url::to(['default/view', 'id' => $idPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
         }
 
         return $this->render('index', [
@@ -73,7 +72,7 @@ class AnakController extends Controller {
 
         $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $model->IDPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
         }
 
         return $this->render('view', [
@@ -92,7 +91,7 @@ class AnakController extends Controller {
 
         $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $idPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
         }
 
         if ($model->load(Yii::$app->request->post())) {
@@ -122,7 +121,7 @@ class AnakController extends Controller {
 
         $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $model->IDPegawai]);
         if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -164,7 +163,7 @@ class AnakController extends Controller {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
     }
 
 }

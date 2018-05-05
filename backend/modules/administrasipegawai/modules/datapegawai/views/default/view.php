@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <div class="row form-group">            
-    <div class="col-sm-2 col-sm-offset-1">
+    <div class="col-sm-2">
         <figure class="text-center">
             <?=
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/biodata.png', [
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/orang_tua.png', [
                         'alt' => 'Orang Tua',
                         'width' => '64px'
-                    ]), ['ortu/index?id=' . $id], ['class' => 'item-hover']);
+                    ]), ['ortu/index?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Orang Tua</figcaption>
         </figure>
@@ -68,9 +68,20 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/kerabat.png', [
                         'alt' => 'Kerabat',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['kerabat/index?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Kerabat</figcaption>
+        </figure>
+    </div>
+    <div class="col-sm-2">
+        <figure class="text-center">
+            <?=
+            Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/kerabat.png', [
+                        'alt' => 'Saudara',
+                        'width' => '64px'
+                    ]), ['saudara/index?idPegawai=' . $id], ['class' => 'item-hover']);
+            ?>
+            <figcaption>Saudara Kandung</figcaption>
         </figure>
     </div>
 </div>
@@ -86,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/cpns.png', [
                         'alt' => 'CPNS',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>CPNS</figcaption>
         </figure>
@@ -97,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/pns.png', [
                         'alt' => 'PNS',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>PNS</figcaption>
         </figure>
@@ -108,7 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/pangkat.png', [
                         'alt' => 'Pangkat',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Pangkat</figcaption>
         </figure>
@@ -119,7 +130,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/jabatan.png', [
                         'alt' => 'Jabatan',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Jabatan</figcaption>
         </figure>
@@ -130,7 +141,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/fungsional.png', [
                         'alt' => 'Fungsional',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Fungsional</figcaption>
         </figure>
@@ -141,7 +152,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/sanksi.png', [
                         'alt' => 'Sanksi',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Sanksi</figcaption>
         </figure>
@@ -154,7 +165,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/kgb.png', [
                         'alt' => 'KGB',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>KGB</figcaption>
         </figure>
@@ -165,7 +176,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/pensiun.png', [
                         'alt' => 'Pensiun/Berhenti',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Pensiun/Berhenti</figcaption>
         </figure>
@@ -176,7 +187,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/pmk.png', [
                         'alt' => 'Peninjauan Masa Kerja',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Peninjauan Masa Kerja</figcaption>
         </figure>
@@ -194,7 +205,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/pendidikan.png', [
                         'alt' => 'Pendidikan',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Pendidikan</figcaption>
         </figure>
@@ -205,7 +216,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/penghargaan.png', [
                         'alt' => 'Penghargaan',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Penghargaan</figcaption>
         </figure>
@@ -216,7 +227,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/tugas_belajar.png', [
                         'alt' => 'Tugas Belajar',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Tugas Belajar</figcaption>
         </figure>
@@ -227,7 +238,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/seminar.png', [
                         'alt' => 'Seminar',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Seminar</figcaption>
         </figure>
@@ -238,7 +249,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/organisasi.png', [
                         'alt' => 'Organisasi',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Organisasi</figcaption>
         </figure>
@@ -249,7 +260,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/luar_negeri.png', [
                         'alt' => 'Luar Negeri',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Luar Negeri</figcaption>
         </figure>
@@ -267,7 +278,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/prajab.png', [
                         'alt' => 'Diklat Pra Jabatan',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Diklat Pra Jabatan</figcaption>
         </figure>
@@ -278,7 +289,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/penjenjangan.png', [
                         'alt' => 'Diklat Penjenjangan',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Diklat Penjenjangan</figcaption>
         </figure>
@@ -289,7 +300,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/diklat_teknis.png', [
                         'alt' => 'Diklat Teknis',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Diklat Teknis</figcaption>
         </figure>
@@ -300,7 +311,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/diklat_fungsional.png', [
                         'alt' => 'Diklat Fungsional',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>Diklat Fungsional</figcaption>
         </figure>
@@ -311,7 +322,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Html::a(Html::img(SikepHelper::getAlias('@assetsdatapegawai') . '/dp3.png', [
                         'alt' => 'DP3',
                         'width' => '64px'
-                    ]), ['view?sub=pegawai&page=temp&id=' . $id], ['class' => 'item-hover']);
+                    ]), ['view?idPegawai=' . $id], ['class' => 'item-hover']);
             ?>
             <figcaption>DP3</figcaption>
         </figure>

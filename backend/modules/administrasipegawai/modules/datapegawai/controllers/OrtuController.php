@@ -3,18 +3,15 @@
 namespace backend\modules\administrasipegawai\modules\datapegawai\controllers;
 
 use Yii;
-use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 use backend\models\TmstKeluarga;
 use backend\models\TmstKeluargaSearch;
 use backend\models\TmstPegawai;
 
-/**
- * PasanganController implements the CRUD actions for TmstKeluarga model.
- */
-class PasanganController extends Controller {
+class OrtuController extends Controller {
 
     public $layout = 'main';
 

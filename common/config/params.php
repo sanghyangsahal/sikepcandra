@@ -1,7 +1,7 @@
 <?php
 
 //note: usage
-//Yii::$app->params['prefixFileFoto']
+//Yii::$app->params['pageNotFound']
 
 return [
     'adminEmail' => 'admin@example.com',
@@ -12,5 +12,6 @@ return [
     'emptyImageName' => 'blank.jpg',
     'prefixFileFoto' => 'foto_',
     'prefixFileAkta' => 'akta_',
+    'pageNotFound' => 'The requested page does not exist.',
     'pathDataPegawaiView' => '@backend/modules/administrasipegawai/modules/datapegawai/views/',
 ];
