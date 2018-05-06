@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use backend\components\profile\ProfileHeader;
+use backend\components\widget\ProfileHeader;
 
 $this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
 $this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];

@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use backend\components\profile\ProfileHeader;
+use backend\components\widget\ProfileHeader;
 
 $this->title = 'Update Kerabat: ' . $model->IdAnggotaKeluarga;
 $this->params['breadcrumbs'][] = ['label' => 'Kerabat', 'url' => ['index']];

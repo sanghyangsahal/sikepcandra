@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\components\profile;
+namespace backend\components\widget;
 
 use yii\base\Widget;
 
@@ -19,7 +19,7 @@ class ProfileHeader extends Widget {
     }
 
     public function run() {
-        return $this->render('_header', ['model' => $this->modelPegawai, 'backUrl' => $this->backUrl]);
+        return $this->render('_profileHeader', ['model' => $this->modelPegawai, 'backUrl' => $this->backUrl]);
     }
 
 }

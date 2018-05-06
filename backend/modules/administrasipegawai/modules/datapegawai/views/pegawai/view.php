@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use kartik\detail\DetailView;
 use kartik\file\FileInput;
 use backend\components\SikepHelper;
-use backend\components\profile\ProfileHeader;
+use backend\components\widget\ProfileHeader;
 
 /**
  * note: DetailView

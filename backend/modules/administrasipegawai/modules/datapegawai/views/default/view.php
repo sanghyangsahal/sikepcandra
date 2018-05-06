@@ -2,7 +2,7 @@
 
 use backend\components\SikepHelper;
 use yii\helpers\Html;
-use backend\components\profile\ProfileHeader;
+use backend\components\widget\ProfileHeader;
 
 /**
  * note:

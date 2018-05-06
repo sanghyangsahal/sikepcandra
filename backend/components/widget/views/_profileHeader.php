@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of _header
+ * ini view widget header profile pegawai
  *
  * @author chakoo
  */

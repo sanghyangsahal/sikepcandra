@@ -3,10 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\jui\DatePicker;
-use kartik\grid\GridView;
-use backend\components\SikepHelper;
-//use yii\widgets\Pjax;
-
+use backend\components\widget\GridView;
 
 /**
  * note:
@@ -43,49 +40,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <?php // Pjax::begin();               ?>
-
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'moduleId' => 'gridview',
-        'condensed' => TRUE,
-        'hover' => TRUE,
-        'resizableColumns' => TRUE,
-        'persistResize' => TRUE,
-        'responsiveWrap' => TRUE,
-        'floatHeader' => TRUE,
-        'floatHeaderOptions' => ['scrollingTop' => '50'],
-        'export' => ['fontAwesome' => TRUE],
-        'exportConfig' => SikepHelper::getDocumentExportConfig($this->title),
-        'panel' => ['before' => ''], //'before' harus diset biar toolbar nongol
-        'toolbar' => [
-//            [
-//                'content' => Html::button('<i class="glyphicon glyphicon-plus"></i>', [
-//                    'type' => 'button',
-//                    //'title' => Yii::t('kvgrid', 'Add Book'),
-//                    'title' => 'title 1',
-//                    'class' => 'btn btn-success',
-//                ]) . ' ' .
-//                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['grid-demo'], [
-//                    'class' => 'btn btn-default',
-//                    'title' => 'title 2',
-//                        //'title' => Yii::t('kvgrid', 'Reset Grid')
-//                ]),
-//            ],
-            '{export}',
-//            '{toggleData}'
-        ],
-        'toggleDataContainer' => ['class' => 'btn-group-sm'],
-        'exportContainer' => ['class' => 'btn-group-sm'],
-        'pjax' => TRUE,
-        'pjaxSettings' => [
-            'neverTimeout' => TRUE,
-            'options' => ['id' => 'kv-unique-id-1'],
-        //'beforeGrid' => 'My fancy content before.',
-        //'afterGrid' => 'My fancy content after.',
-        ],
+        'title' => $this->title,
         'columns' => [
             [
                 'class' => 'yii\grid\SerialColumn',
@@ -183,6 +142,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
     ?>
-    <?php // Pjax::end();   ?>
 
 </div>

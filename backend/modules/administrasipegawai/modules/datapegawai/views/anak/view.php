@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\detail\DetailView;
-use backend\components\profile\ProfileHeader;
+use backend\components\widget\ProfileHeader;
 
 $this->title = $model->IdAnggotaKeluarga;
 $this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
