@@ -1,7 +1,8 @@
 <?php
 
-use common\components\SikepHelper;
+use backend\components\SikepHelper;
 use yii\helpers\Html;
+use backend\components\profile\ProfileHeader;
 
 /**
  * note:
@@ -12,6 +13,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['
 $this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?= ProfileHeader::widget($profileParams) ?>
 
 <div class="row form-group"> 
     <h3>Data Pokok</h3>

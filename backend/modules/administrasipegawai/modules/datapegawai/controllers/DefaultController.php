@@ -47,16 +47,12 @@ class DefaultController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id) {
-        $model = $this->findModel($id);
-
-        $this->layout = 'main';
-
-        $this->view->params['backUrl'] = Url::to(['index',]);
-        $this->view->params['modelPegawai'] = $model;
-
         return $this->render('view', [
-                    'model' => $model,
-                    'id' => $id
+                    'id' => $id,
+                    'profileParams' => [
+                        'modelPegawai' => $this->findModel($id),
+                        'backUrl' => Url::to(['index',]),
+                    ],
         ]);
     }
 

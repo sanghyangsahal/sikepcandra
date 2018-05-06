@@ -1,21 +1,19 @@
 <?php
 
 use yii\helpers\Html;
+use backend\components\profile\ProfileHeader;
 
-
-/* @var $this yii\web\View */
-/* @var $model backend\models\TmstKeluarga */
-
-$this->title = 'Tambah Saudara';
-$this->params['breadcrumbs'][] = ['label' => 'Saudara', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?= ProfileHeader::widget($profileParams) ?>
+
 <div class="tmst-keluarga-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <?= $this->render('_form', ['model' => $model,]) ?>
 
 </div>

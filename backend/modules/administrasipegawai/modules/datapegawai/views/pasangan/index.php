@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use common\components\SikepHelper;
+use backend\components\SikepHelper;
+use backend\components\profile\ProfileHeader;
 
 $this->title = 'Pasangan';
 $this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
@@ -10,10 +11,11 @@ $this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/admin
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?= ProfileHeader::widget($profileParams) ?>
+
 <div class="tmst-keluarga-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
 
     <p>
         <?= Html::a('Tambah Pasangan', ['create?idPegawai=' . $idPegawai], ['class' => 'btn btn-success']) ?>

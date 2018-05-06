@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use common\components\SikepHelper;
+use backend\components\SikepHelper;
 
 $title_module = 'Administrasi Pegawai';
 $this->title = $title_module;

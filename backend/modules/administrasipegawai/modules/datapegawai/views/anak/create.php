@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use backend\components\profile\ProfileHeader;
 
 $this->title = 'Tambah Anak';
 $this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
@@ -8,14 +9,12 @@ $this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/admin
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?= ProfileHeader::widget($profileParams) ?>
+
 <div class="tmst-keluarga-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?=
-    $this->render('_form', [
-        'model' => $model,
-    ])
-    ?>
+    <?= $this->render('_form', ['model' => $model,]) ?>
 
 </div>

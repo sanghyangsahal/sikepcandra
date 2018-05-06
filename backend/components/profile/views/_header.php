@@ -1,7 +1,12 @@
 <?php
 
+/**
+ * Description of _header
+ *
+ * @author chakoo
+ */
 use yii\helpers\Html;
-use common\components\SikepHelper;
+use backend\components\SikepHelper;
 ?>
 
 <div class="profile-header">

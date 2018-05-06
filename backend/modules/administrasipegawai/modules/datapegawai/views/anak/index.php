@@ -2,13 +2,17 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use common\components\SikepHelper;
+use backend\components\SikepHelper;
+use backend\components\profile\ProfileHeader;
 
 $this->title = 'Anak';
 $this->params['breadcrumbs'][] = ['label' => 'Administrasi Pegawai', 'url' => ['/administrasipegawai/default']];
 $this->params['breadcrumbs'][] = ['label' => 'Daftar Pegawai', 'url' => ['/administrasipegawai/datapegawai']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?= ProfileHeader::widget($profileParams) ?>
+
 
 <div class="tmst-keluarga-index">
 

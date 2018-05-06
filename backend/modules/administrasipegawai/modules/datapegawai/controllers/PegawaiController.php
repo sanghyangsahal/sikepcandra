@@ -9,7 +9,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
-use common\components\SikepHelper;
+use backend\components\SikepHelper;
 use backend\models\TrefKabupaten;
 use backend\models\TmstPegawai;
 
@@ -36,15 +36,14 @@ class PegawaiController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id) {
-        $this->layout = 'main';
-
         $model = $this->findModel($id);
-
-        $this->view->params['backUrl'] = Url::to(['default/view', 'id' => $model->IdPegawai]);
-        $this->view->params['modelPegawai'] = $model;
 
         return $this->render('view', [
                     'model' => $model,
+                    'profileParams' => [
+                        'modelPegawai' => $model,
+                        'backUrl' => Url::to(['default/view', 'id' => $model->IdPegawai]),
+                    ],
         ]);
     }
 
@@ -56,8 +55,8 @@ class PegawaiController extends Controller {
     public function actionCreate() {
         $model = new TmstPegawai();
 
-        $this->view->params['backUrl'] = Url::to(['index',]);
-        $this->view->params['modelPegawai'] = $model;
+//        $this->view->params['backUrl'] = Url::to(['index',]);
+//        $this->view->params['modelPegawai'] = $model;
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -70,11 +69,7 @@ class PegawaiController extends Controller {
             $model->PropinsiTempatLahir = $model->intIdPropinsi;
 
             if ($model->save()) {
-                return $this->render(Yii::$app->params['pathDataPegawaiView'] . 'default/view', [
-                            'model' => $model,
-                            'id' => $model->IdPegawai,
-                            'page' => 'pegawai/view',
-                ]);
+                return $this->redirect(['default/index',]);
             }
         }
 
@@ -89,12 +84,7 @@ class PegawaiController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id) {
-        $this->layout = 'main';
-
         $model = $this->findModel($id);
-
-        $this->view->params['backUrl'] = Url::previous();
-        $this->view->params['modelPegawai'] = $model;
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -133,6 +123,10 @@ class PegawaiController extends Controller {
 
         return $this->render('update', [
                     'model' => $model,
+                    'profileParams' => [
+                        'modelPegawai' => $model,
+                        'backUrl' => Url::previous(),
+                    ],
         ]);
     }
 

@@ -10,10 +10,9 @@ use yii\filters\VerbFilter;
 use backend\models\TmstKeluarga;
 use backend\models\TmstKeluargaSearch;
 use backend\models\TmstPegawai;
+use backend\components\SikepHelper;
 
 class OrtuController extends Controller {
-
-    public $layout = 'main';
 
     /**
      * {@inheritdoc}
@@ -37,15 +36,14 @@ class OrtuController extends Controller {
         $searchModel = new TmstKeluargaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $this->view->params['backUrl'] = Url::to(['default/view', 'id' => $idPegawai]);
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
-            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
-        }
-
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     'idPegawai' => $idPegawai,
+                    'profileParams' => [
+                        'modelPegawai' => SikepHelper::validateModel(TmstPegawai::findOne($idPegawai)),
+                        'backUrl' => Url::to(['default/view', 'id' => $idPegawai]),
+                    ],
         ]);
     }
 
@@ -58,14 +56,13 @@ class OrtuController extends Controller {
     public function actionView($id) {
         $model = $this->findModel($id);
 
-        $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $model->IDPegawai]);
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
-            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
-        }
-
         return $this->render('view', [
                     'model' => $model,
                     'idPegawai' => $model->IDPegawai,
+                    'profileParams' => [
+                        'modelPegawai' => SikepHelper::validateModel(TmstPegawai::findOne($model->IDPegawai)),
+                        'backUrl' => Url::to(['index', 'idPegawai' => $model->IDPegawai]),
+                    ],
         ]);
     }
 
@@ -76,11 +73,6 @@ class OrtuController extends Controller {
      */
     public function actionCreate($idPegawai) {
         $model = new TmstKeluarga();
-
-        $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $idPegawai]);
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($idPegawai)) === NULL) {
-            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
-        }
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -94,6 +86,10 @@ class OrtuController extends Controller {
         return $this->render('create', [
                     'model' => $model,
                     'idPegawai' => $idPegawai,
+                    'profileParams' => [
+                        'modelPegawai' => SikepHelper::validateModel(TmstPegawai::findOne($idPegawai)),
+                        'backUrl' => Url::to(['index', 'idPegawai' => $idPegawai]),
+                    ],
         ]);
     }
 
@@ -107,11 +103,6 @@ class OrtuController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
-        $this->view->params['backUrl'] = Url::to(['index', 'idPegawai' => $model->IDPegawai]);
-        if (($this->view->params['modelPegawai'] = TmstPegawai::findOne($model->IDPegawai)) === NULL) {
-            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
-        }
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IdAnggotaKeluarga]);
         }
@@ -119,6 +110,10 @@ class OrtuController extends Controller {
         return $this->render('update', [
                     'model' => $model,
                     'idPegawai' => $model->IDPegawai,
+                    'profileParams' => [
+                        'modelPegawai' => SikepHelper::validateModel(TmstPegawai::findOne($model->IDPegawai)),
+                        'backUrl' => Url::to(['index', 'idPegawai' => $model->IDPegawai]),
+                    ],
         ]);
     }
 

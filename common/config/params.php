@@ -13,5 +13,5 @@ return [
     'prefixFileFoto' => 'foto_',
     'prefixFileAkta' => 'akta_',
     'pageNotFound' => 'The requested page does not exist.',
-    'pathDataPegawaiView' => '@backend/modules/administrasipegawai/modules/datapegawai/views/',
+    //'pathDataPegawaiView' => '@backend/modules/administrasipegawai/modules/datapegawai/views/',
 ];

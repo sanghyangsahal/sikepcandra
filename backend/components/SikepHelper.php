@@ -1,6 +1,6 @@
 <?php
 
-namespace common\components;
+namespace backend\components;
 
 use yii;
 use yii\helpers\Url;
@@ -27,7 +27,7 @@ class SikepHelper {
         $path = isset($imgName) ? (self::getAlias($alias) . '/' . $imgName) : null;
 
         // note: file_exists ga berfungsi, nanti dicek lg
-        if (!empty($path) /*&& file_exists($path)*/) {
+        if (!empty($path) /* && file_exists($path) */) {
             return $path;
         }
 
@@ -55,6 +55,14 @@ class SikepHelper {
         return true;
     }
 
+    /**
+     * 
+     * upload image / doc
+     * @param type $img
+     * @param type $prefix
+     * @param type $alias
+     * @return string
+     */
     public function uploadFile($img, $prefix, $alias) {
         if (!empty($img)) {
             $imgName = $prefix . '.' . $img->extension;
@@ -66,6 +74,11 @@ class SikepHelper {
         return NULL;
     }
 
+    /**
+     * 
+     * @param type $fileName
+     * @return type
+     */
     public function getDocumentExportConfig($fileName) {
         return [
             GridView::EXCEL => [
@@ -186,6 +199,14 @@ class SikepHelper {
                 ]
             ],
         ];
+    }
+
+    public function validateModel($model) {
+        if ($model === NULL) {
+            throw new NotFoundHttpException(Yii::$app->params['pageNotFound']);
+        }
+
+        return $model;
     }
 
     /**
