@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= ProfileHeader::widget($profileParams) ?>
 
-
 <div class="tmst-keluarga-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

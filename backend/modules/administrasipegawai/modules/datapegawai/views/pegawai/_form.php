@@ -4,9 +4,9 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\jui\DatePicker;
 use kartik\file\FileInput;
-use kartik\select2\Select2;
 use backend\components\SikepHelper;
-use yii\bootstrap\ActiveForm;
+use backend\components\widget\DropdownSearch;
+use kartik\form\ActiveForm;
 use backend\models\TrefAgama;
 use backend\models\TrefBank;
 use backend\models\TrefBentukMuka;
@@ -22,6 +22,10 @@ use backend\models\TrefSukubangsa;
 use backend\models\TrefWarnaKulit;
 
 /**
+ * 
+ * kartik's activeform
+ * https://github.com/kartik-v/yii2-widget-activeform
+ * 
  * FileInput
  * http://demos.krajee.com/widget-details/fileinput
  * http://plugins.krajee.com/file-advanced-usage-demo
@@ -34,7 +38,7 @@ use backend\models\TrefWarnaKulit;
 
     <?php
     $form = ActiveForm::begin([
-                'layout' => 'horizontal',
+                'type' => ActiveForm::TYPE_HORIZONTAL,
                 'class' => 'form-horizontal',
                 'options' => ['enctype' => 'multipart/form-data'],
     ]);
@@ -59,17 +63,16 @@ use backend\models\TrefWarnaKulit;
     <?= $form->field($model, 'GelarBelakang')->textInput(['maxlength' => true]) ?>
 
     <?=
-    $form->field($model, 'KodeGolonganRuang')->widget(Select2::classname(), [
+    DropdownSearch::widget([
+        'form' => $form,
+        'model' => $model,
+        'attribute' => 'KodeGolonganRuang',
+        'placeholder' => 'Pilih golongan ruang',
         'data' => ArrayHelper::map(TrefGolonganRuang::find()->orderBy('NamaGolongan ASC')->all(), 'IdGolonganRuang', function($model) {
                     $golRuang = (!empty($model->Golongan) && !empty($model->Ruang) ? ' (' . $model->Golongan . '/' . $model->Ruang . ')' : '');
                     return $model->NamaGolongan . $golRuang;
                 }),
-        'options' => ['placeholder' => 'Pilih golongan ruang'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-        'language' => 'id',
-    ]);
+    ])
     ?>
 
     <?=
@@ -117,17 +120,14 @@ use backend\models\TrefWarnaKulit;
     ?>
 
     <?=
-    $form->field($model, 'KabupatenTempatLahir')->widget(Select2::classname(), [
+    DropdownSearch::widget([
+        'id' => 'dropdown-kabupaten',
+        'form' => $form,
+        'model' => $model,
+        'attribute' => 'KabupatenTempatLahir',
+        'placeholder' => 'Pilih kabupaten',
         'data' => ArrayHelper::map(TrefKabupaten::find()->orderBy('NamaKabupaten ASC')->all(), 'IdKabupaten', 'NamaKabupaten'),
-        'language' => 'id',
-        'options' => [
-            'placeholder' => 'Pilih kabupaten',
-            'id' => 'dropdown-kabupaten'
-        ],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]);
+    ])
     ?>
 
     <?php
@@ -257,13 +257,12 @@ use backend\models\TrefWarnaKulit;
             ]
         ]);
 
-        echo $form->field($model, 'KodeBankPegawai')->widget(Select2::classname(), [
+        echo DropdownSearch::widget([
+            'form' => $form,
+            'model' => $model,
+            'attribute' => 'KodeBankPegawai',
+            'placeholder' => 'Pilih bank',
             'data' => ArrayHelper::map(TrefBank::find()->orderBy('NamaBank ASC')->all(), 'IdBank', 'NamaBank'),
-            'language' => 'id',
-            'options' => ['placeholder' => 'Pilih bank'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
         ]);
 
         echo $form->field($model, 'NomorRekeningPegawai')->textInput(['maxlength' => true]);
