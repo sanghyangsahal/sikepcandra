@@ -66,7 +66,7 @@ class SikepHelper {
     public function uploadFile($img, $prefix, $alias) {
         if (!empty($img)) {
             $imgName = $prefix . '.' . $img->extension;
-            if ($img->saveAs(self::getAlias($alias) . '/' . $imgName)) {
+            if ($img->saveAs(Yii::getAlias($alias) . '/' . $imgName)) {
                 return $imgName;
             }
         }
